@@ -28,7 +28,7 @@ namespace Threax.Sqlite.Ext
                     {
                         Directory.CreateDirectory(dir);
                     }
-                    File.Create(file);
+                    using (var stream = File.Create(file)) { }
                 }
             }
         }
