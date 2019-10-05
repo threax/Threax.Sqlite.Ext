@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Threax.Sqlite.Ext
+namespace Threax.Sqlite.Ext.EfCore3
 {
     public static class ConvertDbGuidsToEfCore3
     {
