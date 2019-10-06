@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿#if NETCOREAPP3_0
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,9 +16,9 @@ namespace Threax.Sqlite.Ext.EfCore3
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="dbContext">The context to migrate.</param>
-        public static void ConvertToEfCore3<T>(this T dbContext) where T : DbContext
+        public static void ConvertToEfCore3(this DbContext dbContext)
         {
-            var type = typeof(T);
+            var type = dbContext.GetType();
             var enumerableType = typeof(IEnumerable);
 
             foreach (var prop in type.GetProperties()
@@ -53,3 +54,4 @@ PRAGMA foreign_keys = 1;");
         }
     }
 }
+#endif
